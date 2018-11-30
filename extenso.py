@@ -60,16 +60,14 @@ class Extenso:
             dezena = floor((parte_numero - (centena*100)) / 10)
 
             # Cálculo para retornar a unidade
-            unidade = floor(parte_numero - (centena*100) - (dezena*10))
-
-            # Caso o número por extenso já esteja preenchido e somente a unidade do grupo está preenchida, adiciona "E", caso contrário, adiciona ","
-            if (centena == 0 and dezena == 0 and unidade > 0 and extenso != ''):
-                extenso += ' e '
-            elif (extenso != ''):
-                extenso += ', '
+            unidade = parte_numero - (centena*100) - (dezena*10)
 
             # Caso a centena esteja preenchida, faz o tratamento
             if (centena > 0):
+                if (dezena == 0 and unidade == 0 and extenso != ''):
+                    extenso += ' e '
+                else:
+                    extenso += ', '
                 if (centena == 1): # Se for CEM deve busca do singular, caso a unidade ou dezena esteja preenchida, busca do plural
                     if(dezena > 0 or unidade > 0):
                         extenso += self.centenas[centena].plural
@@ -92,7 +90,7 @@ class Extenso:
 
             # Caso a unidade esteja preenchida, faz o tratamento
             if (unidade > 0):
-                if (centena > 0 or dezena > 0): # Se a centena ou dezena estão preenchidas, adiciona "E"
+                if (extenso != ''): # Se a centena ou dezena estão preenchidas, adiciona "E"
                     extenso += ' e '
                 extenso += self.unidades[unidade] # Busca o extenso correspondente nas unidades
 
