@@ -66,7 +66,7 @@ class Extenso:
             if (centena > 0):
                 if (dezena == 0 and unidade == 0 and extenso != ''):
                     extenso += ' e '
-                else:
+                elif extenso != '':
                     extenso += ', '
                 if (centena == 1): # Se for CEM deve busca do singular, caso a unidade ou dezena esteja preenchida, busca do plural
                     if(dezena > 0 or unidade > 0):
