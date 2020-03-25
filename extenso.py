@@ -31,6 +31,8 @@ class Extenso:
     def escrever(self, numero):
         if (numero > self._numero_maximo):
             raise Exception('Número informado maior que o número máximo suportado')
+        if (numero == 0):
+            return 'zero'
         extenso = ''
 
         # Conversão do número recebido para string
